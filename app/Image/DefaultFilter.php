@@ -36,6 +36,4 @@ class DefaultFilter
             $constraint->upsize();
         }, $args[2]);
     }
-
-
 }
