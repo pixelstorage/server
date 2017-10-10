@@ -3,7 +3,7 @@
 PixelStorage is an open source image hosting service. It was designed to server image hostings and manipulations in a single place.
 
 ## Features
- * [The client](https://github.com/pixelstorage/php-client) developer friendly.
+ * [The client](https://github.com/pixelstorage/php-client) is developer friendly.
  * The image ID size is predicitble. It's a 70 letter, which is compound by two hashes.
  * Secure
     * Only clients with credentials can issue an upload URL.
