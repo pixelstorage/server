@@ -22,7 +22,7 @@ class Image extends Model {
     {
         $prefix   = implode("/", str_split(substr($this->public, 0, 3)));
         $filename = substr($this->public, 3);
-        return storage_path() . '/images/' . $prefix . '/' . $filename . '.png';
+        return storage_path() . '/images/' . $prefix . '/' . $filename;
     }
 
     public function code()

@@ -46,12 +46,10 @@ class UploadController extends Controller
         if (!$upload || $upload->uploaded || count($files) !== 1 || !$file->isValid()) {
             throw new \RuntimeException;
         }
-        
+
         $img  = Image::make($file);
         $prefix   = implode("/", str_split(substr($upload->image->public, 0, 3)));
         $filename = substr($upload->image->public, 3);
-
-
 
         $target = $upload->image->path();
 
@@ -62,7 +60,7 @@ class UploadController extends Controller
         $img->save($target);
 
         $image = $upload->image;
-        $image->status    = 'new';
+        $image->status = 'uploaded';
         $image->size   = filesize($target);
         $image->width  = $img->width();
         $image->height = $img->height();
@@ -71,6 +69,10 @@ class UploadController extends Controller
         $upload->uploaded = 1;
         $upload->save();
 
-        var_dump($img);exit;
+        if (!$upload->redirect_to) {
+            return ['success' => true, 'image' => $upload->image->code()];
+        }
+
+        return redirect($upload->redirect_to);
     }
 }

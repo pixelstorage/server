@@ -19,9 +19,9 @@ class CreateClientCommand extends Command {
      *
      * @var string
      */
-    protected $description = "Serve the application on the PHP development server";
- 
-    /** 
+    protected $description = "creates a new client";
+
+    /**
      * Execute the console command.
      *
      * @return void
@@ -29,11 +29,15 @@ class CreateClientCommand extends Command {
     public function handle()
     {
         $client = new Client;
-        $client->client_id = Uuid::uuid4();
-        $client->secret    = Uuid::uuid4();
+        $client->client_id = (string)Uuid::uuid4();
+        $client->secret    = (string)Uuid::uuid4();
         $client->save();
 
-        echo "client_id: {$client->client_id}\nsecret: {$client->secret}\n";
+        echo "client_id: {$client->client_id}\nsecret: {$client->secret}\n\n";
+        echo '$image = new \PixelStorage\Client("http://localhost:9999",'
+            . var_export($client->client_id, true) . ', '
+            . var_export($client->secret, true). ');';
+        echo "\n\n";
     }
 
 }

@@ -13,3 +13,4 @@
 $router->post('/create', 'UploadController@create');
 $router->post('/upload/{code}/', ['as' => 'upload', 'uses' => 'UploadController@upload']);
 $router->get('/image/{image}/{command:.*}', 'ImageController@handler');
+$router->get('/i/{image}/{command:.*}', 'ImageController@handler');

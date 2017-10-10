@@ -20,6 +20,7 @@ class UploadMigration extends Migration
             $table->boolean('uploaded')->default(false);
             $table->integer('ip');
             $table->string('code')->required()->unique();
+            $table->text('redirect_to')->default('');
             $table->bigInteger('max_size');
             $table->timestamps();
         });
